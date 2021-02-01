@@ -28,7 +28,7 @@ body, html {
     src: url('../fonts/Rubik/Rubik-Regular.ttf');
 }
     
-  
+/* --------- MENU-BAR --------- */ 
 #Menu-Bar {
     width: 15%;
     height: 100vh;
@@ -57,5 +57,57 @@ body, html {
     cursor: pointer;
     background-color: var(--white);
     color: var(--green);
+}
 
+/* --------- MAIN-PAGE --------- */ 
+#Main-Window {
+    width: 85%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#Main-Window h1 {
+    margin: 40px;
+}
+
+/* --------- RECIPE-GRID -------- */ 
+#Recipe-Grid {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  
+}
+
+.recipe-container {
+    position: relative;
+	margin: 10px 10px 25px 10px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-container:hover {
+    cursor: pointer;
+}
+
+.recipe-container img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+    height: 250px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.recipe-container span {
+    width: 100%;
+    background-color: var(--green);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    border-radius: 0px 0px 20px 20px;
 }
