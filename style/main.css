@@ -1,0 +1,61 @@
+/* MAIN STYLE FILE --- COOKEE --- */
+
+body, html {
+    background-color: var(--white);
+    margin:0px;
+    height: 100%;
+    font-family: 'Rubik-Regular';
+}
+
+/* --------- COLORS --------- */
+:root {
+    --red: #B22222;
+    --green: #45d697;
+    --white: #F0F8FF;
+}
+
+/* --------- FONTS --------- */
+@font-face {
+    font-family: 'Rubik-Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Rubik/Rubik-Medium.ttf');
+}
+@font-face {
+    font-family: 'Rubik-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Rubik/Rubik-Regular.ttf');
+}
+    
+  
+#Menu-Bar {
+    width: 15%;
+    height: 100vh;
+    font-family: 'Rubik-Bold';
+    font-variant: small-caps;
+    font-size: 1.2em;
+    
+    background-color: var(--green);
+    color: var(--white);
+    
+    padding-top: 30px;
+}
+
+#Menu-Bar ul {
+    margin: 0;
+    list-style-type: none;
+}
+
+#Menu-Bar li {
+    margin-bottom: 30px;
+    padding: 10px 0px 10px 20px;
+    border-radius: 25px 0% 0% 25px;
+}
+
+#Menu-Bar li:hover {
+    cursor: pointer;
+    background-color: var(--white);
+    color: var(--green);
+
+}
