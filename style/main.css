@@ -11,6 +11,7 @@ body, html {
 :root {
     --red: #B22222;
     --green: #45d697;
+    --greenTransparent: #45d697ce;
     --white: #F0F8FF;
 }
 
@@ -84,10 +85,6 @@ body, html {
 .recipe-container {
     position: relative;
 	margin: 10px 10px 25px 10px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .recipe-container:hover {
@@ -100,14 +97,35 @@ body, html {
 	margin-right: auto;
 	margin-top: 0px;
     height: 250px;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20px 20px 20px 20px;
 }
 
-.recipe-container span {
+.desc-recipe-cont {
+    position: absolute;
+    bottom: 0px;
     width: 100%;
     background-color: var(--green);
     color: var(--white);
     text-align: center;
-    padding: 10px 0px 10px 0px;
+    /* padding: 10px 0px 10px 0px; */
     border-radius: 0px 0px 20px 20px;
+    transition: background-color 0.7s ease 0s;
 }
+
+.desc-recipe-cont:hover {
+    height: 100%;
+    top:0px;
+
+    background-color: var(--greenTransparent);
+    border-radius: 20px 20px 20px 20px;
+    padding: 0px 0px 0px 0px;
+}
+
+.desc-recipe-cont p {
+    display: none;
+}
+
+.desc-recipe-cont:hover p {
+    display: block;
+}
+
