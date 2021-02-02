@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+// Connection file to the database
+include("database/connectDatabase.php");
+
+
+?>
 <html>
     <head>
         <meta charset="UTF-8"/>
