@@ -12,7 +12,7 @@ class Recette
     public function displayCard()
     {
         echo('
-        <a style="display:block" href="recette.html">
+        <a style="display:block" href="recettePage.php?recette='.$this->nom.'">
         <div class="recipe-container"> 
             <img src="../img/cookies.jpeg"> 
             <div class="desc-recipe-cont">
@@ -24,6 +24,16 @@ class Recette
         ');
     }
 
+    public function displayIngredients()
+    {
+        echo("<ul>");
+        foreach($this->ingredients as $ingredient) 
+        {
+            echo("<li>".$ingredient."</li>");
+        }
+        echo("</ul>");
+    }
+
     public function getName()
     {
         return $this->nom;
@@ -33,8 +43,6 @@ class Recette
     {
         return $ingredients;
     }
-
-
 }
 
 ?>

@@ -11,7 +11,6 @@ while($resultats = $req->fetch())
 {
     array_push($recettes, new Recette($resultats['nom']));
 }
-
 ?>
 
 <html>
@@ -23,7 +22,7 @@ while($resultats = $req->fetch())
 
     <body>
         <div id="Menu-Bar">
-            <a href="index.html"><p>Cookee</p></a>
+            <a href="index.php"><p>Cookee</p></a>
             <ul>
                 <li>placard</li>
                 <li>recettes</li>

@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+// Connection file to the database
+include("database/connectDatabase.php");
+// Include Recipe Class
+include("lib/recette.php");
+
+// Retrieve recipe name and ingredients list
+$recetteName = $_GET["recette"];
+$ingredients = array();
+$req = $bdd->prepare(
+    'SELECT i.nom FROM ingredient AS i
+    JOIN recette_ingredient AS ri
+    ON i.id_ingredient = ri.id_ingredient 
+    JOIN recette AS r
+    ON ri.id_recette = r.id_recette 
+    WHERE r.nom = ?');
+$req->execute(array($recetteName));
+
+while($resultat = $req->fetch())
+{
+    array_push($ingredients, $resultat['nom']);
+}
+
+?>
+
 <html>
     <head>
         <meta charset="UTF-8"/>
@@ -9,7 +33,7 @@
 
     <body>
         <div id="Menu-Bar">
-            <a href="index.html"><p>Cookee</p></a>
+            <a href="index.php"><p>Cookee</p></a>
             <ul>
                 <li>placard</li>
                 <li>recettes</li>
@@ -19,17 +43,17 @@
         </div>
 
         <div id="Main-Window">
-            <h1>Cookies</h1>
+            <?php
+            echo("<h1>".$recetteName."</h1>")
+            ?>
 
             <div id="ingredients-cont">
                 <ul>
-                    <li>Oeuf</li>
-                    <li>Farine</li>
-                    <li>Beurre</li>
-                    <li>Sucre en poudre</li>
-                    <li>Sucre canne</li>
-                    <li>Chocolat 200g</li>
-                    <li>Levure</li>
+                <?php
+                foreach($ingredients as $ingredient) {
+                    echo("<li>".$ingredient."</li>");
+                }
+                ?>
                 </ul> 
             </div>
 
