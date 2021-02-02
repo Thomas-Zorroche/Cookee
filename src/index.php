@@ -1,9 +1,19 @@
 <?php
 // Connection file to the database
 include("database/connectDatabase.php");
+// Include Recipe Class
+include("lib/recette.php");
 
+// Create Recipe objects from database
+$req = $bdd->query('SELECT nom FROM recette');
+$recettes = array();
+while($resultats = $req->fetch())
+{
+    array_push($recettes, new Recette($resultats['nom']));
+}
 
 ?>
+
 <html>
     <head>
         <meta charset="UTF-8"/>
@@ -25,42 +35,13 @@ include("database/connectDatabase.php");
         <div id="Main-Window">
             <h1>Recettes</h1>
             <div id="Recipe-Grid"> 
-                <a style="display:block" href="recette.html">
-                <div class="recipe-container"> 
-                    <img src="../img/cookies.jpeg"> 
-                    <div class="desc-recipe-cont">
-                        <h2>Cookies</h2>
-                        <p>Time: 30min</p>
-                    </div> 
-                </div>
-                </a>
-
-                <div class="recipe-container"> 
-                    <img src="../img/cookies.jpeg"> 
-                    <div class="desc-recipe-cont">
-                        <h2>Cookies</h2>
-                        <p>Time: 30min</p>
-                    </div> 
-                </div>
-
-                <div class="recipe-container"> 
-                    <img src="../img/cookies.jpeg"> 
-                    <div class="desc-recipe-cont">
-                        <h2>Cookies</h2>
-                        <p>Time: 30min</p>
-                    </div> 
-                </div>
-
-                <div class="recipe-container"> 
-                    <img src="../img/cookies.jpeg"> 
-                    <div class="desc-recipe-cont">
-                        <h2>Cookies</h2>
-                        <p>Time: 30min</p>
-                    </div> 
-                </div>
-
-
+                <?php
+                foreach($recettes as $recette) {
+                    $recette->displayCard();
+                }
+                ?>
             </div>
         </div>
+
     </body>
 </html>
