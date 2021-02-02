@@ -107,7 +107,6 @@ body, html {
     background-color: var(--green);
     color: var(--white);
     text-align: center;
-    /* padding: 10px 0px 10px 0px; */
     border-radius: 0px 0px 20px 20px;
     transition: background-color 0.7s ease 0s;
 }
