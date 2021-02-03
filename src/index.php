@@ -27,7 +27,7 @@ while($resultats = $req->fetch())
                 <li>placard</li>
                 <li>recettes</li>
                 <li>repas</li>
-                <li>admin</li>
+                <a href="ajoutRecettePage.php"><li>admin</li></a>
             </ul>    
         </div>
 

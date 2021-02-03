@@ -9,8 +9,8 @@ body, html {
 
 /* --------- COLORS --------- */
 :root {
-    --red: #B22222;
     --green: #45d697;
+    --grey: #b9d4d1;
     --greenTransparent: #45d697ce;
     --white: #F0F8FF;
 }
@@ -27,6 +27,22 @@ body, html {
     font-style: normal;
     font-weight: normal;
     src: url('../fonts/Rubik/Rubik-Regular.ttf');
+}
+
+
+/* --------- LINKS --------- */
+a:link
+{
+	color:white;
+	text-decoration: none;
+}
+a:visited
+{
+	color:white;
+	text-decoration: none;
+}
+a:hover {
+	color:white;
 }
     
 /* --------- MENU-BAR --------- */ 
@@ -66,6 +82,11 @@ body, html {
     position: absolute;
     top: 0;
     right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #Main-Window h1 {
