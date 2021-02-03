@@ -18,3 +18,22 @@
     align-items: center;
     flex-direction: column;
 }
+
+#Tags-picked-cont {
+    display: flex;
+}
+
+#Tags-picked-cont p {
+    background-color: var(--green);
+    color: black;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+
+    margin: 10px;
+}
+
+#Tags-picked-cont span {
+    cursor: pointer;
+    color: red;
+
+}
