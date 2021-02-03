@@ -5,9 +5,23 @@ function addTag(e)
 
     // Max value for tags is 3
     if (childrenCount >= 3) return;
-
+    
+    // Retrieve tag in text format
     var target = e.target || e.srcElement;
-    container.insertAdjacentHTML('beforeend', '<p>' + target.textContent + '<span onclick="deleteTag(event)"> x </span> </p>');
+    var tag = target.textContent;
+
+    // Check whether the tag is already picked
+    var nodes = container.getElementsByTagName("p");
+    var nodesArray = Array.prototype.slice.call(nodes);
+    var alreadyPicked = false;
+    nodesArray.forEach(node => {
+        if (node.textContent === tag + " x ")
+            alreadyPicked = true;
+    });
+    if (alreadyPicked) return;
+
+    // Add tag
+    container.insertAdjacentHTML('beforeend', '<p>' + tag + '<span onclick="deleteTag(event)"> x </span></p>');
 }
 
 function deleteTag(e)
