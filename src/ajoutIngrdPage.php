@@ -31,7 +31,7 @@ while($resultats = $req->fetch())
                 
                 <div id="Ingrd-english-cont">
                     <label>Nom de l'ingrédient (Anglais) : <input type="text" id="nom-english" name="nom-english" /> </label>
-                    <p class="btn-preview"  onclick="displayIngrdThumbnail()">Preview</p>
+                    <p class="btn-preview" onclick="displayIngrdThumbnail()">Preview</p>
                 </div>
                 <a href="https://www.wordreference.com/"><p>wordreference.com</p></a>
                 <p>Sélectionner l'image appropriée pour l'ingrédient.</p>
