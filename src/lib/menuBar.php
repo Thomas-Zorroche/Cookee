@@ -8,7 +8,7 @@ echo('
     <li>recettes</li>
     <li>repas</li>
     <a href="ajoutRecettePage.php"><li>Ajouter Recette</li></a>
-    <a href="ajoutIngredientPage.php"><li>Ajouter Ingredient</li></a>
+    <a href="ajoutIngrdPage.php"><li>Ajouter Ingredient</li></a>
 </ul>    
 </div>
 

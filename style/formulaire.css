@@ -1,0 +1,87 @@
+#Form-cont {
+    display: flex;
+    width: 700px;
+    height: 500px;
+    background-color: var(--grey);
+
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 20px;
+}
+
+.radio-cont {
+    display: flex;
+}
+
+#Ingrd-boxes-cont {
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+#Tags-picked-cont {
+    display: flex;
+}
+
+#Tags-picked-cont p {
+    background-color: var(--green);
+    color: black;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+
+    margin: 10px;
+}
+
+#Tags-picked-cont span {
+    cursor: pointer;
+    color: red;
+}
+
+
+
+#Ingrd-english-cont {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn-preview {
+    background-color: var(--white);
+    color: var(--green);
+    border-color: var(--green);
+    border: solid;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+
+    margin: 10px;
+}
+
+.btn-preview:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border-color: var(--green);
+    cursor: pointer;
+}
+
+/* Ingredient Images*/
+#ingrd-img-cont {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ingrd-img {
+    border: solid;
+    border-radius: 20px;
+    border-color: var(--white);
+}
+
+.ingrd-img:hover {
+    cursor: pointer;
+    border-color: var(--green);
+}

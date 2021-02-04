@@ -2,7 +2,7 @@
 // Connection file to the database
 include("database/connectDatabase.php");
 
-// Create Recipe objects from database
+// Retrieve ingredients from database
 $req = $bdd->query('SELECT nom FROM ingredient');
 $ingredients = array();
 while($resultats = $req->fetch())
@@ -16,7 +16,7 @@ while($resultats = $req->fetch())
         <meta charset="UTF-8"/>
         <title> Cookee </title>
         <link rel="stylesheet" href="../style/main.css"/>
-        <link rel="stylesheet" href="../style/ajoutRecette.css"/>
+        <link rel="stylesheet" href="../style/formulaire.css"/>
     </head>
 
     <body>
