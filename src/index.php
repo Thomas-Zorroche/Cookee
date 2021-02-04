@@ -16,20 +16,12 @@ while($resultats = $req->fetch())
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <title> Cookee </title>
+        <title>Cookee</title>
         <link rel="stylesheet" href="../style/main.css"/>
     </head>
 
     <body>
-        <div id="Menu-Bar">
-            <a href="index.php"><p>Cookee</p></a>
-            <ul>
-                <li>placard</li>
-                <li>recettes</li>
-                <li>repas</li>
-                <a href="ajoutRecettePage.php"><li>admin</li></a>
-            </ul>    
-        </div>
+        <?php include("lib/menuBar.php"); ?>
 
         <div id="Main-Window">
             <h1>Recettes</h1>

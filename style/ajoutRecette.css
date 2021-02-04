@@ -11,6 +11,10 @@
     border-radius: 20px;
 }
 
+.radio-cont {
+    display: flex;
+}
+
 #Ingrd-boxes-cont {
     height: 30%;
     display: flex;
@@ -35,5 +39,4 @@
 #Tags-picked-cont span {
     cursor: pointer;
     color: red;
-
 }

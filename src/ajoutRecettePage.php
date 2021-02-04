@@ -20,15 +20,7 @@ while($resultats = $req->fetch())
     </head>
 
     <body>
-        <div id="Menu-Bar">
-            <a href="index.php"><p>Cookee</p></a>
-            <ul>
-                <li>placard</li>
-                <li>recettes</li>
-                <li>repas</li>
-                <li>admin</li>
-            </ul>    
-        </div>
+        <?php include("lib/menuBar.php"); ?>
 
         <div id="Main-Window">
             <h1>Ajouter une Recette</h1>
@@ -46,6 +38,19 @@ while($resultats = $req->fetch())
                 </label>
 
                 <label>Temps de préparation en minutes : <input type="number" name="prepa" min="1" max="300" /> </label>
+                
+                <div class="radio-cont">
+                    Besoin d'un Four ?
+                    <label>Oui<input type="radio" name="four" value="oui"/></label>
+                    <label>Non<input type="radio" name="four" value="non" checked="checked"/></label>
+                </div>
+
+                <div class="radio-cont">
+                    Besoin d'une Friteuse ?
+                    <label>Oui<input type="radio" name="friteuse" value="oui"/></label>
+                    <label>Non<input type="radio" name="friteuse" value="non" checked="checked"/></label>
+                </div>
+
                 <label>Temps de cuisson en minutes : <input type="number" name="cuisson" min="0" max="300" /> </label>
 
                 <p>Ingrédients :</p>
@@ -70,6 +75,8 @@ while($resultats = $req->fetch())
                 </label>
 
                 <div id="Tags-picked-cont"></div>
+
+                <textarea name="message" rows="4" cols="45" style="align-content:left;">Commentaires...</textarea>
 
                 <input type="submit" value="Valider" />
             </div>
