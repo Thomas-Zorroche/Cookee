@@ -31,7 +31,7 @@ form {
 
 #Input-english-cont {
     display: flex;
-    width: 30%;
+    width: 50%;
     justify-content: space-between;
     align-items: center;
 }
@@ -72,7 +72,6 @@ form {
 }
 
 #Ingrd-english-cont {
-    width: 70%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -138,6 +137,9 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+#Input-english-cont input {
+    width: 70%;
 }
 #Ingrd-name-fr:focus {
     box-shadow: 0px 0px 10px var(--red);
