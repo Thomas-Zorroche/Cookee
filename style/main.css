@@ -10,6 +10,7 @@ body, html {
 /* --------- COLORS --------- */
 :root {
     --green: #45d697;
+    --red: #d64545;
     --grey: #b9d4d1;
     --greyDark: #4e6663;
     --greenTransparent: #45d697ce;

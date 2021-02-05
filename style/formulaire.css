@@ -31,12 +31,12 @@ form {
 
 #Input-english-cont {
     display: flex;
-    width: 40%;
+    width: 30%;
     justify-content: space-between;
     align-items: center;
 }
 
-#Input-english-cont a {
+.form-inputs-cont a {
     color:black;
     text-decoration: underline;
 }
@@ -78,6 +78,10 @@ form {
     align-items: center;
 }
 
+#Ingrd-english-cont p {
+    margin: 25px;
+}
+
 /* Buttons */
 #Btn-validate {
     align-self: center;
@@ -111,17 +115,36 @@ form {
 }
 
 .ingrd-img {
-    border: solid;
-    border-radius: 20px;
-    border-color: var(--white);
+    filter: gray; /* IE5+ */
+    -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
+    -webkit-transition: all .15s ease-in-out;  
 }
 
 .ingrd-img:hover {
-    border-color: var(--green);
+    filter: none;
+    -webkit-filter: grayscale(0);
 }
 
 .ingrd-img-select {
-    border-color: var(--green);
+}
+
+/* Input Text */
+input[type=text] {
+    letter-spacing: 2px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#Ingrd-name-fr:focus {
+    box-shadow: 0px 0px 10px var(--red);
+    border: 2px solid var(--red);
+}
+#Warning-ingrd-name {
+    color: var(--red);
 }
 
 /* Radio Buttons Unitées */

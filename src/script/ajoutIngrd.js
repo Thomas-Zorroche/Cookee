@@ -50,3 +50,59 @@ function selectIngrd(e)
     // Finally, select the right one
     imgNode.style.borderColor = "var(--green)";
 }
+
+function ingrdTypingEvent() {
+    var textField = document.getElementById("Ingrd-name-fr");
+    var name = textField.value;
+    name = normalizeInputField(name);
+    
+    var warningNode = document.getElementById("Warning-ingrd-name");
+    
+    var ingredientsDatabase = getIngredientsDatabase();
+
+    // Check if name size is at least 2
+    if (name.length < 3) {
+        textField.style.border = "2px solid var(--red)"
+        textField.style.boxShadow = "0px 0px 10px var(--red)";
+        warningNode.textContent = "Doit contenir au minimum 3 lettres."
+    }
+    // Check if name is already inside database
+    else if (isIngrdInsideDatabase(name, ingredientsDatabase)) {
+        textField.style.border = "2px solid var(--red)"
+        textField.style.boxShadow = "0px 0px 10px var(--red)";
+        warningNode.textContent = "L'ingrédient est déjà dans la base de données."
+    }
+    // Check if name contains special caracters
+    else if (containsSpecialCaracters(name)) {
+        textField.style.border = "2px solid var(--red)"
+        textField.style.boxShadow = "0px 0px 10px var(--red)";
+        warningNode.textContent = "Ne doit pas contenir de charactères spéciaux tels que : ' \" ^ ¨ é à è ";
+    }
+    else {
+        textField.style.border = "2px solid var(--green)"
+        textField.style.boxShadow = "0px 0px 10px var(--green)";
+        warningNode.textContent = ""
+    }
+
+}
+
+function getIngredientsDatabase() {
+    var containerIngrd = document.getElementById("Ingrd-array-target");
+    var ingrdNodes = containerIngrd.getElementsByTagName('p');
+    var ingrdNames = [];
+
+    for (const ingrdNode of ingrdNodes) {
+        ingrdNames.push(ingrdNode.textContent);
+    }
+    return ingrdNames;
+}
+
+function isIngrdInsideDatabase(ingrdName, ingrdArrayDdb) {
+    ingrdName = ingrdName.toLowerCase();
+    for (var name of ingrdArrayDdb) {
+        name = name.toLowerCase();
+        if (name === ingrdName) return true;
+    }
+    return false;
+}
+

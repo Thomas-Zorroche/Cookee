@@ -30,20 +30,21 @@ while($resultats = $req->fetch())
                 <div class="form-windows-cont">
                     <h2>Nom de l'ingrédient (Fr)</h2>
                     <div class="form-inputs-cont">
-                        <input type="text" name="nom" value="Sucre" />
+                        <input type="text" name="Ingrd-name-fr" id="Ingrd-name-fr" placeholder="Sucre"  autocomplete="off" oninput="ingrdTypingEvent()"/>
+                        <p id="Warning-ingrd-name"></p>
                     </div>
                 </div>
 
                 <div class="form-windows-cont">
                     <h2>Nom de l'ingrédient (En)</h2>
                     <div class="form-inputs-cont">
+                        <p>Ecrire le nom de l'ingrédient en anglais, cliquer sur Preview, puis sélectionner l'image appropriée pour l'ingrédient.</p>
+                        <a href="https://www.wordreference.com/" target="_blank"><p>wordreference.com</p></a>
                         <div id="Input-english-cont">
-                            <input type="text" id="nom-english" name="nom-english" value="Sugar" />
-                            <a href="https://www.wordreference.com/" target="_blank"><p>wordreference.com</p></a>
+                            <input type="text" id="nom-english" name="nom-english" placeholder="Sugar" autocomplete="off"/>
                             <p class="btn-form" onclick="displayIngrdThumbnail()">Preview</p>
                         </div>
-                        <p>Cliquer sur Preview puis sélectionner l'image appropriée pour l'ingrédient.</p>
-                    <div id="ingrd-img-cont"></div>
+                        <div id="ingrd-img-cont"></div>
                     </div>
                 </div>
 
@@ -63,8 +64,17 @@ while($resultats = $req->fetch())
             </div>
 
         </div>
+
+        <div id="Ingrd-array-target" style="display: none;"> 
+            <?php 
+            foreach($ingredients as $ingredient) {
+                echo ("<p>".$ingredient."</p>"); 
+            }
+            ?> 
+        </div>
     
         <script type="text/javascript" src="script/config.js"></script>
+        <script type="text/javascript" src="script/utils.js"></script>
         <script type="text/javascript" src="script/apiFood.js"></script>
         <script type="text/javascript" src="script/ajoutIngrd.js"></script>
 
