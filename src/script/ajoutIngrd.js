@@ -1,3 +1,43 @@
+var thumbnailIngrdPicked = false;
+var uniteIngrdPicked = false;
+
+document.querySelector("form").addEventListener('change', function() {
+    checkForm();
+});
+
+function checkForm() {
+    if (isFormValid())
+        activateValidateButton();
+    else
+        disableValideButton();
+}
+
+function isFormValid() {
+    if (isInputNameValid() && thumbnailIngrdPicked && uniteIngrdPicked)
+        return true;
+    else
+        return false;
+}
+
+function activateValidateButton() {
+    var Btn = document.getElementById("Btn-validate");
+    Btn.style.opacity = "1.0"
+    Btn.disabled = false;
+}
+
+function disableValideButton() {
+    var Btn = document.getElementById("Btn-validate");
+    Btn.style.opacity = "0.25"
+    Btn.disabled = true;
+}
+
+function isInputNameValid() {
+    var textField = document.getElementById("Ingrd-name-fr");
+    if (textField.style.border === "2px solid var(--green)") return true;
+    else return false;
+}
+
+
 /**
  * Add img into html code with image provide by user input field.
  * Call on Preview btn click.
@@ -6,10 +46,6 @@ async function displayIngrdThumbnail()
 {
     // Retrieve user input from text input field (english name)
     var userIngrdName = document.getElementById("nom-english").value;
-
-    // Check whether userIngrdName is arleady inside the database
-    // If so, do note make API call
-    // TODO
 
     // API Call
     var correctIngrdName = getIngrdName(userIngrdName);
@@ -44,46 +80,37 @@ function selectIngrd(e)
     var nodes = containerImg.getElementsByTagName("img");
     var nodesArray = Array.prototype.slice.call(nodes);
     nodesArray.forEach(node => {
-        node.style.borderColor = "var(--white)";
+        node.className = "ingrd-img";
     });
 
     // Finally, select the right one
-    imgNode.style.borderColor = "var(--green)";
+    imgNode.className = "ingrd-img-select";
+    thumbnailIngrdPicked = true;
+    checkForm();
 }
 
 function ingrdTypingEvent() {
     var textField = document.getElementById("Ingrd-name-fr");
     var name = textField.value;
     name = normalizeInputField(name);
-    
-    var warningNode = document.getElementById("Warning-ingrd-name");
-    
     var ingredientsDatabase = getIngredientsDatabase();
 
     // Check if name size is at least 2
     if (name.length < 3) {
-        textField.style.border = "2px solid var(--red)"
-        textField.style.boxShadow = "0px 0px 10px var(--red)";
-        warningNode.textContent = "Doit contenir au minimum 3 lettres."
+        inputWarn("Doit contenir au minimum 3 lettres.");
     }
     // Check if name is already inside database
     else if (isIngrdInsideDatabase(name, ingredientsDatabase)) {
-        textField.style.border = "2px solid var(--red)"
-        textField.style.boxShadow = "0px 0px 10px var(--red)";
-        warningNode.textContent = "L'ingrédient est déjà dans la base de données."
+        inputWarn("L'ingrédient est déjà dans la base de données.");
     }
     // Check if name contains special caracters
     else if (containsSpecialCaracters(name)) {
-        textField.style.border = "2px solid var(--red)"
-        textField.style.boxShadow = "0px 0px 10px var(--red)";
-        warningNode.textContent = "Ne doit pas contenir de charactères spéciaux tels que : ' \" ^ ¨ é à è ";
+        inputWarn("Ne doit pas contenir de charactères spéciaux tels que : ' \" ^ ¨ é à è ... ");
     }
     else {
-        textField.style.border = "2px solid var(--green)"
-        textField.style.boxShadow = "0px 0px 10px var(--green)";
-        warningNode.textContent = ""
+        inputCorrect();
     }
-
+    checkForm();
 }
 
 function getIngredientsDatabase() {
@@ -106,3 +133,25 @@ function isIngrdInsideDatabase(ingrdName, ingrdArrayDdb) {
     return false;
 }
 
+function inputWarn(message) {
+    var textField = document.getElementById("Ingrd-name-fr");
+    var warningNode = document.getElementById("Warning-ingrd-name");
+
+
+    textField.style.border = "2px solid var(--red)"
+    textField.style.boxShadow = "0px 0px 10px var(--red)";
+    warningNode.textContent = message;
+}
+
+function inputCorrect() {
+    var textField = document.getElementById("Ingrd-name-fr");
+    var warningNode = document.getElementById("Warning-ingrd-name");
+
+    textField.style.border = "2px solid var(--green)"
+    textField.style.boxShadow = "0px 0px 10px var(--green)";
+    warningNode.textContent = ""
+}
+
+function selectIngrdUnite() {
+    uniteIngrdPicked = true;
+}

@@ -86,8 +86,8 @@ form {
     align-self: center;
     font-size: 1.4em;
     border-radius: 30px;
+    opacity: 0.25;
 }
-
 .btn-form {
     background-color: var(--greyDark);
     border: solid;
@@ -96,7 +96,6 @@ form {
     color: white;
     padding: 5px 10px 5px 10px;
 }
-
 .btn-form:hover {
     background-color: var(--green);
     color: white;
@@ -118,13 +117,13 @@ form {
     -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
     -webkit-transition: all .15s ease-in-out;  
 }
-
 .ingrd-img:hover {
     filter: none;
     -webkit-filter: grayscale(0);
 }
-
 .ingrd-img-select {
+    filter: none;
+    -webkit-filter: grayscale(0);
 }
 
 /* Input Text */

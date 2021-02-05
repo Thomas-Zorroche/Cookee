@@ -50,7 +50,7 @@ while($resultats = $req->fetch())
 
                 <div class="form-windows-cont">
                     <h2>Unitée</h2>
-                    <div class="form-inputs-cont" id="Radio-unite-cont">
+                    <div class="form-inputs-cont" id="Radio-unite-cont" onchange="selectIngrdUnite()">
                         <div><input type="radio" name="unite" id="ml" value="ml"/> <label for="ml"> <span></span> ml </label> </div>
                         <div><input type="radio" name="unite" id="g" value="g"/> <label for="g"> <span></span> g </label> </div>
                         <div><input type="radio" name="unite" id="sachet" value="sachet"/> <label for="sachet"> <span></span> sachet </label> </div>
@@ -58,7 +58,7 @@ while($resultats = $req->fetch())
                     </div>
                 </div>
                 
-                <input type="submit" id="Btn-validate" class="btn-form" value="Valider"  />
+                <input type="submit" id="Btn-validate" disabled="true" class="btn-form" value="Valider"  />
 
             </form>
             </div>
