@@ -1,7 +1,7 @@
 #Form-cont {
     display: flex;
     width: 80%;
-    height: 700px;
+    height: 850px;
     flex-direction: column;
 }
 
@@ -192,3 +192,56 @@ input[type="radio"] + label span, input[type="radio"]:checked + label span {
     -moz-transition: background-color 0.24s linear; 
     transition: background-color 0.24s linear; 
 }
+
+/* Popup Validate Formulaire */
+#PopupValidateForm {
+    display: none;
+    position: fixed;
+    width : 500px;
+    height: 300px;
+    z-index:13;
+
+    /* Center the popup */
+    left: 50%;
+    margin-left: -250px; /* Half of the width */
+    top : 50%;
+    margin-top: -150px; /* Half of the height */
+    
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--greyDark);
+    padding: 15px;
+}
+#Resume-ingrd-cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: var(--grey);
+    border-radius: 10px;
+    padding: 15px 0px 15px 0px;
+
+}
+#Btn-validate-cont {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+#Shadow-popup{
+    display: block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:12;
+    opacity:0.5;
+  }
+  

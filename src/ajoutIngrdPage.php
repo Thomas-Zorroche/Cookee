@@ -5,10 +5,13 @@ include("database/connectDatabase.php");
 // Retrieve ingredients from database
 $req = $bdd->query('SELECT nom FROM ingredient');
 $ingredients = array();
-while($resultats = $req->fetch())
-{
+while($resultats = $req->fetch()) {
     array_push($ingredients, $resultats['nom']);
 }
+
+// Form sent
+$formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) && isset($_POST["ingrd-path"]));
+
 ?>
 
 <html>
@@ -26,7 +29,7 @@ while($resultats = $req->fetch())
             <h1>Ajouter un Ingredient</h1>
 
             <div id="Form-cont">
-            <form method="post" action="cible.php">
+            <form method="post" action="ajoutIngrdPage.php">
                 <div class="form-windows-cont">
                     <h2>Nom de l'ingrédient (Fr)</h2>
                     <div class="form-inputs-cont">
@@ -45,6 +48,7 @@ while($resultats = $req->fetch())
                             <p class="btn-form" onclick="displayIngrdThumbnail()">Preview</p>
                         </div>
                         <div id="ingrd-img-cont"></div>
+                        <input type="hidden" name="ingrd-path" id="ingrd-path" value=""></p>
                     </div>
                 </div>
 
@@ -65,6 +69,7 @@ while($resultats = $req->fetch())
 
         </div>
 
+        <!-- Hidden div used to display database ingredients -->
         <div id="Ingrd-array-target" style="display: none;"> 
             <?php 
             foreach($ingredients as $ingredient) {
@@ -72,11 +77,31 @@ while($resultats = $req->fetch())
             }
             ?> 
         </div>
-    
+
+        <!-- Popup formulaire validate -->
+        <?php if ($formValidateState) include("lib/popupValidateForm.php"); ?>
+        <style><?php 
+            if ($formValidateState) { 
+                ?>
+                #Shadow-popup { display: block;}
+                #PopupValidateForm { display: block;}
+                <?php
+            } 
+            else {  
+                ?>
+                #Shadow-popup { display: none;}
+                #PopupValidateForm { display: none;}
+                <?php 
+            }
+        ?></style>
+
+        <div id="Shadow-popup"></div>
+
         <script type="text/javascript" src="script/config.js"></script>
         <script type="text/javascript" src="script/utils.js"></script>
-        <script type="text/javascript" src="script/apiFood.js"></script>
         <script type="text/javascript" src="script/ajoutIngrd.js"></script>
+        <script type="text/javascript" src="script/apiFood.js"></script>
+        <script type="text/javascript" src="script/formulaireIngrd.js"></script>
 
     </body>
 </html>
