@@ -20,11 +20,11 @@ include("database/gettersDatabase.php");
             <h1>Ajouter une Recette</h1>
 
             <div id="Form-cont">
-            <form method="post" action="ajoutRecettePage.php">
+            <form method="post" action="validateRecette.php">
                 <div class="form-windows-cont">
                     <h2>Nom de la Recette</h2>
                     <div class="form-inputs-cont">
-                        <input type="text" name="Recette-name" id="Recette-name" placeholder="Tarte au citron" autocomplete="off" oninput="ingrdTypingEvent()"/>
+                        <input type="text" name="Recette-name" id="Name" placeholder="Tarte au citron" autocomplete="off" oninput="ingrdTypingEvent('recette')"/>
                         <p id="Warning-ingrd-name"></p>
                     </div>
                 </div>
@@ -125,6 +125,7 @@ include("database/gettersDatabase.php");
         </div>
     
         <script type="text/javascript" src="script/formulaireRecette.js"></script>
-        <script type="text/javascript" src="script/numberPicker.js"></script>
+        <script type="text/javascript" src="script/form/textField.js"></script>
+        <script type="text/javascript" src="script/form/numberPicker.js"></script>
     </body>
 </html>

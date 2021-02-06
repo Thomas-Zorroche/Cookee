@@ -1,3 +1,34 @@
+/*
+ * Functions for validate form
+ * ===============================================================================
+ */
+document.querySelector("form").addEventListener('change', function() {
+    checkForm();
+});
+
+function checkForm() {
+    (isFormValid()) ? activateValidateButton() : disableValideButton();
+}
+
+function isFormValid() {
+    return (isInputNameValid());
+}
+
+function activateValidateButton() {
+    var Btn = document.getElementById("Btn-validate");
+    Btn.style.opacity = "1.0"
+    Btn.disabled = false;
+}
+
+function disableValideButton() {
+    var Btn = document.getElementById("Btn-validate");
+    Btn.style.opacity = "0.25"
+    Btn.disabled = true;
+}
+/*
+ * ===============================================================================
+ */
+
 function selectIngrd(e)
 {
     var node = e.target || e.srcElement;

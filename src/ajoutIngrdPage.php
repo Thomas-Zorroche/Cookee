@@ -40,7 +40,7 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
                 <div class="form-windows-cont">
                     <h2>Nom de l'ingrédient (Fr)</h2>
                     <div class="form-inputs-cont">
-                        <input type="text" name="Ingrd-name-fr" id="Ingrd-name-fr" placeholder="Sucre"  autocomplete="off" oninput="ingrdTypingEvent()"/>
+                        <input type="text" name="Name" id="Name" placeholder="Sucre"  autocomplete="off" oninput="ingrdTypingEvent('ingrd')"/>
                         <p id="Warning-ingrd-name"></p>
                     </div>
                 </div>
@@ -106,10 +106,10 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
         <div id="Shadow-popup"></div>
 
         <script type="text/javascript" src="script/config.js"></script>
-        <script type="text/javascript" src="script/utils.js"></script>
+        <script type="text/javascript" src="script/formulaireIngrd.js"></script>
+        <script type="text/javascript" src="script/form/textField.js"></script>
         <script type="text/javascript" src="script/ajoutIngrd.js"></script>
         <script type="text/javascript" src="script/apiFood.js"></script>
-        <script type="text/javascript" src="script/formulaireIngrd.js"></script>
 
     </body>
 </html>

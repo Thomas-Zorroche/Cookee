@@ -25,7 +25,7 @@ function disableValideButton() {
 }
 
 function isInputNameValid() {
-    var textField = document.getElementById("Ingrd-name-fr");
+    var textField = document.getElementById("Name");
     return (textField.style.border === "2px solid var(--green)");
 }
 
@@ -90,74 +90,11 @@ function selectIngrd(e)
     });
 
     thumbnailNode.classList.toggle("thumbnail-cont-select");
-
-    thumbnailIngrdPicked = true;
     document.getElementById("ingrd-path").value = imgNode.src.slice(48);
     checkForm();
 }
 
-function ingrdTypingEvent() {
-    var textField = document.getElementById("Ingrd-name-fr");
-    var name = textField.value;
-    name = normalizeInputField(name);
-    var ingredientsDatabase = getIngredientsDatabase();
 
-    // Check if name size is at least 2
-    if (name.length < 3) {
-        inputWarn("Doit contenir au minimum 3 lettres.");
-    }
-    // Check if name is already inside database
-    else if (isIngrdInsideDatabase(name, ingredientsDatabase)) {
-        inputWarn("L'ingrédient est déjà dans la base de données.");
-    }
-    // Check if name contains special caracters
-    else if (containsSpecialCaracters(name)) {
-        inputWarn("Ne doit pas contenir de charactères spéciaux tels que : ' \" ^ ¨ é à è ... ");
-    }
-    else {
-        inputCorrect();
-    }
-    checkForm();
-}
-
-function getIngredientsDatabase() {
-    var containerIngrd = document.getElementById("Ingrd-array-target");
-    var ingrdNodes = containerIngrd.getElementsByTagName('p');
-    var ingrdNames = [];
-
-    for (const ingrdNode of ingrdNodes) {
-        ingrdNames.push(ingrdNode.textContent);
-    }
-    return ingrdNames;
-}
-
-function isIngrdInsideDatabase(ingrdName, ingrdArrayDdb) {
-    ingrdName = ingrdName.toLowerCase();
-    for (var name of ingrdArrayDdb) {
-        name = name.toLowerCase();
-        if (name === ingrdName) return true;
-    }
-    return false;
-}
-
-function inputWarn(message) {
-    var textField = document.getElementById("Ingrd-name-fr");
-    var warningNode = document.getElementById("Warning-ingrd-name");
-
-
-    textField.style.border = "2px solid var(--red)"
-    textField.style.boxShadow = "0px 0px 10px var(--red)";
-    warningNode.textContent = message;
-}
-
-function inputCorrect() {
-    var textField = document.getElementById("Ingrd-name-fr");
-    var warningNode = document.getElementById("Warning-ingrd-name");
-
-    textField.style.border = "2px solid var(--green)"
-    textField.style.boxShadow = "0px 0px 10px var(--green)";
-    warningNode.textContent = ""
-}
 
 function selectIngrdUnite() {
     uniteIngrdPicked = true;
