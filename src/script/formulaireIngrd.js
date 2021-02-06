@@ -58,7 +58,7 @@ async function displayIngrdThumbnail()
             var url = getIngrdImageUrl(nameIngrd);
             // Insert images inside HTML
             containerImg.insertAdjacentHTML('beforeend', 
-            "<img class='ingrd-img' src='" + url + "' onclick='selectIngrd(event)'>");
+            "<div class='thumbnail-cont' onclick='selectIngrd(event)'><img class='ingrd-img' src='" + url + "' onclick='selectIngrd(event)'></div>");
         }
     })
 }
@@ -69,20 +69,29 @@ async function displayIngrdThumbnail()
  */
 function selectIngrd(e)
 {
-    var imgNode = e.target || e.srcElement;
-    var containerImg = imgNode.parentNode;
+    var node = e.target || e.srcElement;
+    var containerNode, thumbnailNode, imgNode;
+    if (node.tagName == "DIV") {
+        imgNode = node.firstChild;
+        thumbnailNode = node;
+        containerNode = node.parentNode;
+    }
+    else if (node.tagName == "IMG") {
+        imgNode = node;
+        thumbnailNode = node.parentNode;
+        containerNode = node.parentNode.parentNode;
+    }
 
     // Get all img nodes and disable unselect all
-    var nodes = containerImg.getElementsByTagName("img");
+    var nodes = containerNode.getElementsByTagName("div");
     var nodesArray = Array.prototype.slice.call(nodes);
     nodesArray.forEach(node => {
-        node.className = "ingrd-img";
+        node.classList.remove("thumbnail-cont-select");
     });
 
-    // Finally, select the right one
-    imgNode.className = "ingrd-img-select";
-    thumbnailIngrdPicked = true;
+    thumbnailNode.classList.toggle("thumbnail-cont-select");
 
+    thumbnailIngrdPicked = true;
     document.getElementById("ingrd-path").value = imgNode.src.slice(48);
     checkForm();
 }
