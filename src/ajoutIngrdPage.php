@@ -9,6 +9,13 @@ while($resultats = $req->fetch()) {
     array_push($ingredients, $resultats['nom']);
 }
 
+// Retrieve unites from database
+$req = $bdd->query('SELECT nom FROM unite');
+$unites = array();
+while($resultats = $req->fetch()) {
+    array_push($unites, $resultats['nom']);
+}
+
 // Form sent
 $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) && isset($_POST["ingrd-path"]));
 
@@ -55,10 +62,11 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
                 <div class="form-windows-cont">
                     <h2>Unitée</h2>
                     <div class="form-inputs-cont" id="Radio-unite-cont" onchange="selectIngrdUnite()">
-                        <div><input type="radio" name="unite" id="ml" value="ml"/> <label for="ml"> <span></span> ml </label> </div>
-                        <div><input type="radio" name="unite" id="g" value="g"/> <label for="g"> <span></span> g </label> </div>
-                        <div><input type="radio" name="unite" id="sachet" value="sachet"/> <label for="sachet"> <span></span> sachet </label> </div>
-                        <div><input type="radio" name="unite" id="verre" value="verre"/> <label for="verre"> <span></span> verre </label> </div>
+                    <?php
+                    foreach($unites as $unite) {
+                        echo('<div><input type="radio" name="unite" id="'.$unite.'" value="ml"/> <label for="'.$unite.'"> <span></span> '.$unite.' </label> </div>');
+                    }
+                    ?>
                     </div>
                 </div>
                 
