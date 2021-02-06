@@ -9,7 +9,7 @@
  */
 #Form-cont {
     display: flex;
-    width: 80%;
+    width: 70%;
     flex-direction: column;
 }
 form {
@@ -106,6 +106,7 @@ form {
  * -----------------------------------------
  */
 .btn-number {
+    user-select: none;
     background-color: var(--greyDark);
     border-color: var(--greyDark);
     border-radius: 50px;
@@ -134,24 +135,37 @@ input[type=number] {
  * -----------------------------------------
  */
 #ingrd-img-cont {
-    width: 80%;
     display: flex;
     justify-content: space-around;
     cursor: pointer;
+    flex-wrap: wrap;
+}
+.thumbnail-cont {
+    width: 100px;
+    height: 100px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 15px 15px 0px 0px;
+    background-color: var(--greyDark);
+    border-radius: 10px;
+}
+.thumbnail-cont:hover {
+    background-color: var(--green);
+}
+.thumbnail-cont-select {
+    background-color: var(--green);
+}
+.thumbnail-cont p {
+    margin: 0px;
 }
 .ingrd-img {
-    filter: gray; /* IE5+ */
-    -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
-    -webkit-transition: all .15s ease-in-out;  
+
 }
-.ingrd-img:hover {
-    filter: none;
-    -webkit-filter: grayscale(0);
-}
-.ingrd-img-select {
-    filter: none;
-    -webkit-filter: grayscale(0);
-}
+
 
 /* -----------------------------------------
  * Inputs Text

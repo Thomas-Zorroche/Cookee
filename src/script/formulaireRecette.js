@@ -1,3 +1,16 @@
+function selectIngrd(e)
+{
+    var node = e.target || e.srcElement;
+
+    // Check if node is a div
+    if (node.tagName == "DIV") {
+        node.classList.toggle("thumbnail-cont-select");
+    }
+    else {
+        node.parentNode.classList.toggle("thumbnail-cont-select");
+    }
+}
+
 function addTag(e)
 {
     var container = document.getElementById("Tags-picked-cont");

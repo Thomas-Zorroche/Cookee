@@ -1,28 +1,8 @@
 <?php
 // Connection file to the database
 include("database/connectDatabase.php");
-
-// Retrieve ingredients from database
-$req = $bdd->query('SELECT nom FROM ingredient');
-$ingredients = array();
-while($resultats = $req->fetch())
-{
-    array_push($ingredients, $resultats['nom']);
-}
-
-// Retrieve unites from database
-$req = $bdd->query('SELECT nom FROM unite');
-$unites = array();
-while($resultats = $req->fetch()) {
-    array_push($unites, $resultats['nom']);
-}
-
-// Retrieve types from database
-$req = $bdd->query('SELECT nom FROM type');
-$types = array();
-while($resultats = $req->fetch()) {
-    array_push($types, $resultats['nom']);
-}
+// Retrieve data from Database
+include("database/gettersDatabase.php");
 ?>
 
 <html>
@@ -96,20 +76,23 @@ while($resultats = $req->fetch()) {
 
                 <div class="form-windows-cont">
                     <h2>Ingredients</h2>
-                    <div class="form-inputs-cont">
-
+                    <div class="form-inputs-cont" id="ingrd-img-cont">
+                    <?php
+                    $ingrdPaths = getAllIngrdPaths($bdd);
+                    $ingrdNames = getAllIngrdNames($bdd);
+                    
+                    for ($i = 0; $i < count($ingrdNames); $i++) {
+                        echo('
+                        <div class="thumbnail-cont" onclick="selectIngrd(event)">
+                            <img class="ingrd-img" src="https://spoonacular.com/cdn/ingredients_100x100/'.$ingrdPaths[$i].'" >
+                            <p>'.$ingrdNames[$i].'</p>
+                        </div>
+                        ');
+                    } 
+                    ?>
                     </div>
                 </div>
 
-                <p>Ingrédients :</p>
-                <div id="Ingrd-boxes-cont">
-                <?php
-                foreach($ingredients as $ingredient) {
-                    echo('<label>'.$ingredient.'<input type="checkbox" name="'.$ingredient.'"> </label>');
-                }
-                ?>
-                </div>
-                
                 <div class="form-windows-cont">
                     <h2>Tags</h2>
                     <div class="form-inputs-cont">

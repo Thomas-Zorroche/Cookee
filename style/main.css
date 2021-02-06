@@ -10,6 +10,7 @@ body, html {
 /* --------- COLORS --------- */
 :root {
     --green: #45d697;
+    --orange: #d6b445;
     --red: #d64545;
     --grey: #b9d4d1;
     --greyDark: #4e6663;
@@ -103,7 +104,6 @@ a:hover {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-  
 }
 
 .recipe-container {
