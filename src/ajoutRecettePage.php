@@ -9,6 +9,20 @@ while($resultats = $req->fetch())
 {
     array_push($ingredients, $resultats['nom']);
 }
+
+// Retrieve unites from database
+$req = $bdd->query('SELECT nom FROM unite');
+$unites = array();
+while($resultats = $req->fetch()) {
+    array_push($unites, $resultats['nom']);
+}
+
+// Retrieve types from database
+$req = $bdd->query('SELECT nom FROM type');
+$types = array();
+while($resultats = $req->fetch()) {
+    array_push($types, $resultats['nom']);
+}
 ?>
 
 <html>
@@ -25,33 +39,67 @@ while($resultats = $req->fetch())
         <div id="Main-Window">
             <h1>Ajouter une Recette</h1>
 
-            <form method="post" action="cible.php">
             <div id="Form-cont">
-                <label>Nom de la Recette : <input type="text" name="nom" /> </label>
-                
-                <label>Type de recette : 
-                <select name="type">
-                    <option value="Entree">Entree</option>
-                    <option value="Plat">Plat</option>
-                    <option value="Dessert">Dessert</option>
-                </select> 
-                </label>
-
-                <label>Temps de préparation en minutes : <input type="number" name="prepa" min="1" max="300" /> </label>
-                
-                <div class="radio-cont">
-                    Besoin d'un Four ?
-                    <label>Oui<input type="radio" name="four" value="oui"/></label>
-                    <label>Non<input type="radio" name="four" value="non" checked="checked"/></label>
+            <form method="post" action="ajoutRecettePage.php">
+                <div class="form-windows-cont">
+                    <h2>Nom de la Recette</h2>
+                    <div class="form-inputs-cont">
+                        <input type="text" name="Recette-name" id="Recette-name" placeholder="Tarte au citron" autocomplete="off" oninput="ingrdTypingEvent()"/>
+                        <p id="Warning-ingrd-name"></p>
+                    </div>
                 </div>
 
-                <div class="radio-cont">
-                    Besoin d'une Friteuse ?
-                    <label>Oui<input type="radio" name="friteuse" value="oui"/></label>
-                    <label>Non<input type="radio" name="friteuse" value="non" checked="checked"/></label>
+                <div class="form-windows-cont">
+                    <h2>Type</h2>
+                    <div class="form-inputs-cont radio-cont">
+                    <?php
+                    foreach($types as $type) {
+                        echo('<div><input type="radio" name="unite" id="'.$type.'" value="ml"/> <label for="'.$type.'"> <span></span> '.$type.' </label> </div>');
+                    }
+                    ?>
+                    </div>
                 </div>
 
-                <label>Temps de cuisson en minutes : <input type="number" name="cuisson" min="0" max="300" /> </label>
+                <div class="form-windows-cont">
+                    <h2>Temps de préparation en minutes</h2>
+                    <div class="form-inputs-cont">
+                        <span class="btn-number" onclick="Decrement(event)" onmousedown="DecrementNS(event)" onmouseup="StopTimer()">-</span>
+                        <input type="number" name="prepa" min="1" max="300" />
+                        <span class="btn-number" onclick="Increment(event)" onmousedown="IncrementNS(event)" onmouseup="StopTimer()">+</span>
+                    </div>
+                </div>
+
+                <div class="form-windows-cont">
+                    <h2>Besoin d'un Four ?</h2>
+                    <div class="form-inputs-cont radio-cont">
+                        <div><input type="radio" name="four" id="four-oui" value="oui"/> <label for="four-oui"> <span></span> oui </label> </div>
+                        <div><input type="radio" name="four" id="four-non" value="non"/> <label for="four-non"> <span></span> non </label> </div>
+                    </div>
+                </div>
+                
+                <div class="form-windows-cont">
+                    <h2>Besoin d'une Friteuse ?</h2>
+                    <div class="form-inputs-cont radio-cont">
+                        <div><input type="radio" name="friteuse" id="friteuse-oui" value="oui"/> <label for="friteuse-oui"> <span></span> oui </label> </div>
+                        <div><input type="radio" name="friteuse" id="friteuse-non" value="non"/> <label for="friteuse-non"> <span></span> non </label> </div>
+                    </div>
+                </div>
+
+                <div class="form-windows-cont">
+                    <h2>Temps de cuisson en minutes</h2>
+                    <div class="form-inputs-cont">
+                        <span class="btn-number" onclick="Decrement(event)" onmousedown="DecrementNS(event)" onmouseup="StopTimer()">-</span>
+                        <input type="number" name="prepa" min="0" max="300" />
+                        <span class="btn-number" onclick="Increment(event)" onmousedown="IncrementNS(event)" onmouseup="StopTimer()">+</span>
+                    </div>
+                </div>
+
+                <div class="form-windows-cont">
+                    <h2>Ingredients</h2>
+                    <div class="form-inputs-cont">
+
+                    </div>
+                </div>
 
                 <p>Ingrédients :</p>
                 <div id="Ingrd-boxes-cont">
@@ -62,28 +110,38 @@ while($resultats = $req->fetch())
                 ?>
                 </div>
                 
-                <label>Tags (max 3) : 
-                <select name="tag">
-                    <option value="Pizza" onclick="addTag(event)">Pizza</option>
-                    <option value="Ete" onclick="addTag(event)">Ete</option>
-                    <option value="Hiver" onclick="addTag(event)">Hiver</option>
-                    <option value="Netflix" onclick="addTag(event)">Netflix</option>
-                    <option value="Soiree" onclick="addTag(event)">Soiree</option>
-                    <option value="Famille" onclick="addTag(event)">Famille</option>
-                    <option value="Etudiants" onclick="addTag(event)">Etudiants</option>
-                </select>
-                </label>
+                <div class="form-windows-cont">
+                    <h2>Tags</h2>
+                    <div class="form-inputs-cont">
+                    <label>Tags (max 3) : 
+                    <select name="tag">
+                        <option value="Pizza" onclick="addTag(event)">Pizza</option>
+                        <option value="Ete" onclick="addTag(event)">Ete</option>
+                        <option value="Hiver" onclick="addTag(event)">Hiver</option>
+                        <option value="Netflix" onclick="addTag(event)">Netflix</option>
+                        <option value="Soiree" onclick="addTag(event)">Soiree</option>
+                        <option value="Famille" onclick="addTag(event)">Famille</option>
+                        <option value="Etudiants" onclick="addTag(event)">Etudiants</option>
+                    </select>
+                    </label>
+                        <div id="Tags-picked-cont"></div>
+                    </div>
+                </div>
 
-                <div id="Tags-picked-cont"></div>
+                <div class="form-windows-cont">
+                    <h2>Commentaires</h2>
+                    <div class="form-inputs-cont">
+                        <textarea name="message" rows="4" cols="45" style="align-content:left;">Commentaires...</textarea>
+                    </div>
+                </div>
 
-                <textarea name="message" rows="4" cols="45" style="align-content:left;">Commentaires...</textarea>
-
-                <input type="submit" value="Valider" />
-            </div>
+                <input type="submit" id="Btn-validate" disabled="true" class="btn-form" value="Valider"  />
             </form>
+            </div>
 
         </div>
     
-        <script type="text/javascript" src="script/ajoutRecette.js"></script>
+        <script type="text/javascript" src="script/formulaireRecette.js"></script>
+        <script type="text/javascript" src="script/numberPicker.js"></script>
     </body>
 </html>

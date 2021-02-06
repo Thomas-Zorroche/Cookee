@@ -61,7 +61,7 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
 
                 <div class="form-windows-cont">
                     <h2>Unitée</h2>
-                    <div class="form-inputs-cont" id="Radio-unite-cont" onchange="selectIngrdUnite()">
+                    <div class="form-inputs-cont radio-cont" id="Radio-unite-cont" onchange="selectIngrdUnite()">
                     <?php
                     foreach($unites as $unite) {
                         echo('<div><input type="radio" name="unite" id="'.$unite.'" value="ml"/> <label for="'.$unite.'"> <span></span> '.$unite.' </label> </div>');
