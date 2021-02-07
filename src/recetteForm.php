@@ -20,7 +20,7 @@ include("database/gettersDatabase.php");
             <h1>Ajouter une Recette</h1>
 
             <div id="Form-cont">
-            <form method="post" action="validateRecette.php">
+            <form method="post" action="validateForm.php">
                 <div class="form-windows-cont">
                     <h2>Nom de la Recette</h2>
                     <div class="form-inputs-cont">
@@ -34,7 +34,7 @@ include("database/gettersDatabase.php");
                     <div class="form-inputs-cont radio-cont">
                     <?php
                     foreach($types as $type) {
-                        echo('<div><input type="radio" name="unite" id="'.$type.'" value="ml"/> <label for="'.$type.'"> <span></span> '.$type.' </label> </div>');
+                        echo('<div><input type="radio" name="type" id="'.$type.'" value="ml"/> <label for="'.$type.'"> <span></span> '.$type.' </label> </div>');
                     }
                     ?>
                     </div>
@@ -69,7 +69,7 @@ include("database/gettersDatabase.php");
                     <h2>Temps de cuisson en minutes</h2>
                     <div class="form-inputs-cont">
                         <span class="btn-number" onclick="Decrement(event)" onmousedown="DecrementNS(event)" onmouseup="StopTimer()">-</span>
-                        <input type="number" name="prepa" min="0" max="300" />
+                        <input type="number" name="cuisson" min="0" max="300" />
                         <span class="btn-number" onclick="Increment(event)" onmousedown="IncrementNS(event)" onmouseup="StopTimer()">+</span>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ include("database/gettersDatabase.php");
                 <div class="form-windows-cont">
                     <h2>Commentaires</h2>
                     <div class="form-inputs-cont">
-                        <textarea name="message" rows="4" cols="45" style="align-content:left;">Commentaires...</textarea>
+                        <textarea name="commentaire" rows="4" cols="45" style="align-content:left;">Commentaires...</textarea>
                     </div>
                 </div>
 

@@ -36,7 +36,7 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
             <h1>Ajouter un Ingredient</h1>
 
             <div id="Form-cont">
-            <form method="post" action="ajoutIngrdPage.php">
+            <form method="post" action="validateForm.php">
                 <div class="form-windows-cont">
                     <h2>Nom de l'ingrédient (Fr)</h2>
                     <div class="form-inputs-cont">
@@ -64,7 +64,7 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
                     <div class="form-inputs-cont radio-cont" id="Radio-unite-cont" onchange="selectIngrdUnite()">
                     <?php
                     foreach($unites as $unite) {
-                        echo('<div><input type="radio" name="unite" id="'.$unite.'" value="ml"/> <label for="'.$unite.'"> <span></span> '.$unite.' </label> </div>');
+                        echo('<div><input type="radio" name="unite" id="'.$unite.'" value="'.$unite.'"/> <label for="'.$unite.'"> <span></span> '.$unite.' </label> </div>');
                     }
                     ?>
                     </div>
@@ -85,25 +85,6 @@ $formValidateState = (isset($_POST["Ingrd-name-fr"]) && isset($_POST["unite"]) &
             }
             ?> 
         </div>
-
-        <!-- Popup formulaire validate -->
-        <?php if ($formValidateState) include("lib/popupValidateForm.php"); ?>
-        <style><?php 
-            if ($formValidateState) { 
-                ?>
-                #Shadow-popup { display: block;}
-                #PopupValidateForm { display: block;}
-                <?php
-            } 
-            else {  
-                ?>
-                #Shadow-popup { display: none;}
-                #PopupValidateForm { display: none;}
-                <?php 
-            }
-        ?></style>
-
-        <div id="Shadow-popup"></div>
 
         <script type="text/javascript" src="script/config.js"></script>
         <script type="text/javascript" src="script/formulaireIngrd.js"></script>

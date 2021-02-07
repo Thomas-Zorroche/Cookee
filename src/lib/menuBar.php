@@ -7,8 +7,8 @@ echo('
     <li>placard</li>
     <li>recettes</li>
     <li>repas</li>
-    <a href="ajoutRecettePage.php"><li>ajouter recette</li></a>
-    <a href="ajoutIngrdPage.php"><li>ajouter ingredient</li></a>
+    <a href="recetteForm.php"><li>ajouter recette</li></a>
+    <a href="ingrdForm.php"><li>ajouter ingredient</li></a>
 </ul>    
 </div>
 
