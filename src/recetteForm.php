@@ -13,7 +13,7 @@ include("database/gettersDatabase.php");
         <link rel="stylesheet" href="../style/formulaire.css"/>
     </head>
 
-    <body>
+    <body onload="createAlphabetIndex()">
         <?php include("lib/menuBar.php"); ?>
 
         <div id="Main-Window">
@@ -76,20 +76,23 @@ include("database/gettersDatabase.php");
 
                 <div class="form-windows-cont">
                     <h2>Ingredients</h2>
-                    <div class="form-inputs-cont" id="ingrd-img-cont">
-                    <?php
-                    $ingrdPaths = getAllIngrdPaths($bdd);
-                    $ingrdNames = getAllIngrdNames($bdd);
-                    
-                    for ($i = 0; $i < count($ingrdNames); $i++) {
-                        echo('
-                        <div class="thumbnail-cont" onclick="selectIngrd(event)">
-                            <img class="ingrd-img" src="https://spoonacular.com/cdn/ingredients_100x100/'.$ingrdPaths[$i].'" >
-                            <p>'.$ingrdNames[$i].'</p>
+                    <div class="form-inputs-cont">
+                        <ul id="Alphabet-index" ></ul>
+                        <div  id="ingrd-img-cont">
+                            <?php
+                            $ingrdPaths = getAllIngrdPaths($bdd);
+                            $ingrdNames = getAllIngrdNames($bdd);
+                            
+                            for ($i = 0; $i < count($ingrdNames); $i++) {
+                                echo('
+                                <div class="thumbnail-cont" onclick="selectIngrd(event)">
+                                    <img class="ingrd-img" src="https://spoonacular.com/cdn/ingredients_100x100/'.$ingrdPaths[$i].'" >
+                                    <p>'.$ingrdNames[$i].'</p>
+                                </div>
+                                ');
+                            } 
+                            ?>
                         </div>
-                        ');
-                    } 
-                    ?>
                     </div>
                 </div>
 
@@ -124,6 +127,7 @@ include("database/gettersDatabase.php");
 
         </div>
     
+        <script type="text/javascript" src="script/apiFood.js"></script>
         <script type="text/javascript" src="script/formulaireRecette.js"></script>
         <script type="text/javascript" src="script/form/textField.js"></script>
         <script type="text/javascript" src="script/form/numberPicker.js"></script>

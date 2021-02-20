@@ -33,7 +33,6 @@ function isThumbnailValid() {
     return !(document.getElementById("ingrd-path").value == "");
 }
 
-
 /**
  * Add img into html code with image provide by user input field.
  * Call on Preview btn click.
@@ -93,8 +92,6 @@ function selectIngrd(e)
     document.getElementById("ingrd-path").value = imgNode.src.slice(48);
     checkForm();
 }
-
-
 
 function selectIngrdUnite() {
     uniteIngrdPicked = true;

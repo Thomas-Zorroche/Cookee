@@ -79,3 +79,84 @@ function deleteTag(e)
     
     pNode.removeChild(spanNode);
 }
+
+function selectLetter(e) 
+{
+    var node = e.target || e.srcElement;
+
+    // Unselect all letters
+    var containerLetters = node.parentNode;
+    for (var letter of containerLetters.children) {
+        letter.classList.remove("letter-selected");
+    }
+
+    // Select the right letter
+    node.classList.toggle("letter-selected");
+
+    filterLetter(node.textContent);
+}
+
+function filterLetter(letter)
+{
+    // Form Data Creation
+    var form = new FormData();
+    form.append("letter", letter);
+
+    // Send form data to php file
+    fetch("lib/filterLetter.php", {
+        method: "POST",
+        body : form
+    })
+    .then( (res)=> {
+        return res.json();
+    })
+    .then( (data)=> {
+        console.log(data);
+        displayThumbnailIngrd(data)
+    })
+}
+
+function createAlphabetIndex()
+{
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    var container = document.getElementById("Alphabet-index");
+
+    for (var letter of alphabet) {
+        var para = document.createElement("li");
+        var node = document.createTextNode(letter);
+        para.setAttribute('onclick', "selectLetter(event)");
+        para.appendChild(node);
+        container.appendChild(para);
+    }
+}
+
+function displayThumbnailIngrd(arrayIngrd)
+{
+    var container = document.getElementById("ingrd-img-cont");
+    container.innerHTML = "";
+
+    for (let i = 0; i < arrayIngrd.length; i++) {
+        // div node 
+        let divNode = document.createElement("div");
+
+        // img node
+        let imgNode = document.createElement("img");
+        imgNode.setAttribute('src', getIngrdImageUrl(arrayIngrd[i][1]));
+
+        // p node
+        let pNode = document.createElement("p");
+        let pText = document.createTextNode(arrayIngrd[i][0]);
+        pNode.appendChild(pText);
+
+        divNode.appendChild(imgNode);
+        divNode.appendChild(pNode);
+
+        container.appendChild(divNode);
+    }
+}
+
+{/* <div class="thumbnail-cont" onclick="selectIngrd(event)">
+    <img class="ingrd-img" src="https://spoonacular.com/cdn/ingredients_100x100/'.$ingrdPaths[$i].'" >
+    <p>'.$ingrdNames[$i].'</p>
+</div> */}
+

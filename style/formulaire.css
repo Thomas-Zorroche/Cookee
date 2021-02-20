@@ -235,6 +235,41 @@ input[type="radio"] + label span, input[type="radio"]:checked + label span {
 }
 
 /* -----------------------------------------
+ * Alphabet-index
+ * -----------------------------------------
+ */
+#Alphabet-index {
+    display: flex;
+    cursor: pointer;
+    text-align:center;
+}
+
+#Alphabet-index li {
+    float:left;
+    margin:0;
+    padding:0;
+    border-right:1px solid var(--greyDark);
+    font-size: 18px;
+    -moz-box-sizing:border-box;
+    display:inline-block;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    width:3.84%;
+}
+#Alphabet-index li:last-child {
+    border-right: none;
+}
+#Alphabet-index li:hover {
+    color: white;
+    background-color: var(--green);
+}
+.letter-selected {
+    color: white;
+    background-color: var(--green);
+}
+
+/* -----------------------------------------
  * Validate Page
  * -----------------------------------------
  */

@@ -17,7 +17,6 @@ else
 {
     echo("Problème serveur");
     http_response_code(404);
-  
 }
 
 ?>
